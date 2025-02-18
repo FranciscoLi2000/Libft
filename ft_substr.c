@@ -1,11 +1,11 @@
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, unsigned int len)
+char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
+	size_t	i;
 	char			*substr;
 
-	if (start >= (unsigned int)ft_strlen(s))
+	if (start >= ft_strlen(s))
 	{
 		substr = malloc(sizeof(char));
 		if (substr == NULL)

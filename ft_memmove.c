@@ -1,19 +1,19 @@
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, unsigned int n)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
-	if (dest == src)
-		return (dest);
-	if ((char *)dest > (const char *)src
-		&& (char *)dest < (const char *)src + n)
+	if (dst == src)
+		return (dst);
+	if ((char *)dst > (const char *)src
+		&& (char *)dst < (const char *)src + n)
 	{
 		i = n;
 		while (i > 0)
 		{
 			i--;
-			((char *)dest)[i] = ((const char *)src)[i];
+			((char *)dst)[i] = ((const char *)src)[i];
 		}
 	}
 	else
@@ -21,9 +21,9 @@ void	*ft_memmove(void *dest, const void *src, unsigned int n)
 		i = 0;
 		while (i < n)
 		{
-			((char *)dest)[i] = ((const char *)src)[i];
+			((char *)dst)[i] = ((const char *)src)[i];
 			i++;
 		}
 	}
-	return (dest);
+	return (dst);
 }
