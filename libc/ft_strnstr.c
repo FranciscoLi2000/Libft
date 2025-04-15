@@ -1,4 +1,4 @@
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 {

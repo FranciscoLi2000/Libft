@@ -1,4 +1,4 @@
-#include "../libft.h"
+#include "libft.h"
 
 static unsigned int	num_len(int n)
 {

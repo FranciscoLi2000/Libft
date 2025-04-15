@@ -1,4 +1,4 @@
-#include "../libft.h"
+#include "libft.h"
 
 static char	**allocate_substrings(char const *s, char c, int *count)
 {

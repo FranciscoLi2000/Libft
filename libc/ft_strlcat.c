@@ -1,4 +1,4 @@
-#include "../libft.h"
+#include "libft.h"
 
 int	ft_strlcat(char *dest, const char *src, unsigned int size)
 {
