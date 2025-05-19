@@ -6,7 +6,7 @@
 /*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 11:37:00 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/19 09:34:14 by yufli            ###   ########.fr       */
+/*   Updated: 2025/05/19 12:13:23 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ static int	word_len(char const *s, char c)
 	int	len;
 
 	len = 0;
-	while (*s && *s == c)
-	{
+	while (s[len] && s[len] != c)
 		len++;
-		s++;
-	}
 	return (len);
 }
 
@@ -35,21 +32,23 @@ static void	free_all(char **res, int i)
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	int		count;
 	int		i;
-	int		len;
+	int		j;
+	int		word_length;
+	int		word_count;
 
-	count = 0;
 	i = 0;
-	len = 0;
+	word_count = 0;
 	if (!s)
 		return (NULL);
-	while (s[len])
+	j = 0;
+	while (s[j])
 	{
-		if (s[len++] != c && (len == 1 || s[len - 2] == c))
-			count++;
+		if (s[j] != c && (j == 0 || s[j - 1] == c))
+			word_count++;
+		j++;
 	}
-	result = malloc(sizeof(char *) * (count + 1));
+	result = malloc(sizeof(char *) * (word_count + 1));
 	if (!result)
 		return (NULL);
 	while (*s)
@@ -58,9 +57,16 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (*s)
 		{
-			len = word_len(s, c);
-			result[i] = ft_substr(s, 0, len);
+			word_length = word_len(s, c);
+			result[i] = ft_substr(s, 0, word_length);
+			if (!result[i++])
+			{
+				free_all(result, i);
+				return (NULL);
+			}
+			s += word_length;
 		}
 	}
+	result[i] = NULL;
 	return (result);
 }
