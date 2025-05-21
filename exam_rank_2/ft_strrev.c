@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 15:45:20 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/21 15:45:22 by yufli            ###   ########.fr       */
+/*   Created: 2025/05/21 17:25:02 by yufli             #+#    #+#             */
+/*   Updated: 2025/05/21 17:31:41 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Assignment name  : ft_strlen
-Expected files   : ft_strlen.c
+/* Assignment name  : ft_strrev
+Expected files   : ft_strrev.c
 Allowed functions:
 --------------------------------------------------------------------------------
 
-Write a function that returns the length of a string.
+Write a function that reverses (in-place) a string.
+
+It must return its parameter.
 
 Your function must be declared as follows:
 */
+
 #include "exam.h"
 
-int	ft_strlen(char *str)
+char	*ft_strrev(char *str)
 {
-	int	len;
+	char	tmp;
+	int		i;
+	int		j;
 
-	if (!str)
-		return (0);
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	j = 0;
+	while (str[j])
+		j++;
+	j--;
+	i = 0;
+	while (i < j)
+	{
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		i++;
+		j--;
+	}
+	return (str);
 }

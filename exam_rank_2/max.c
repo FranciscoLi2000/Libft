@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 15:45:20 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/21 15:45:22 by yufli            ###   ########.fr       */
+/*   Created: 2025/05/21 18:15:29 by yufli             #+#    #+#             */
+/*   Updated: 2025/05/21 18:21:57 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Assignment name  : ft_strlen
-Expected files   : ft_strlen.c
+/* Assignment name  : max
+Expected files   : max.c
 Allowed functions:
 --------------------------------------------------------------------------------
 
-Write a function that returns the length of a string.
+Write the following function:
 
-Your function must be declared as follows:
-*/
+int		max(int* tab, unsigned int len);
+
+The first parameter is an array of int, the second is the number of elements in
+the array.
+
+The function returns the largest number found in the array.
+
+If the array is empty, the function returns 0. */
+
 #include "exam.h"
 
-int	ft_strlen(char *str)
+int	max(int* tab, unsigned int len)
 {
-	int	len;
+	unsigned int	i;
+	int			max;
 
-	if (!str)
+	if (len == 0)
 		return (0);
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	max = tab[0];
+	i = 1;
+	while (i < len)
+	{
+		if (tab[i] > max)
+			max = tab[i];
+		i++;
+	}
+	return (max);
 }
