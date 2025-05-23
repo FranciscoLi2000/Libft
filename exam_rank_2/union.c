@@ -6,7 +6,7 @@
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:44:07 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/21 18:44:15 by yufli            ###   ########.fr       */
+/*   Updated: 2025/05/22 17:37:52 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,48 @@ $>./union "rien" | cat -e
 $
 $> */
 
+#include <unistd.h>
 
+void	ft_union(char *s1, char *s2)
+{
+	int	seen[256];
+	int	i;
+	int	k;
+
+	k = 0;
+	while (k < 256)
+	{
+		seen[k] = 0;
+		k++;
+	}
+	i = 0;
+	while (s1[i])
+	{
+		if (seen[(unsigned char)s1[i]] == 0)
+		{
+			write(1, &s1[i], 1);
+			seen[(unsigned char)s1[i]] = 1;
+		}
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		if (seen[(unsigned char)s2[i]] == 0)
+		{
+			write(1, &s2[i], 1);
+			seen[(unsigned char)s2[i]] = 1;
+		}
+		i++;
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 3)
+	{
+		ft_union(argv[1], argv[2]);
+	}
+	write(1, "\n", 1);
+	return (0);
+}

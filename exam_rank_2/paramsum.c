@@ -1,40 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_bits.c                                        :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 18:43:30 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/22 17:18:42 by yufli            ###   ########.fr       */
+/*   Created: 2025/05/22 23:29:13 by yufli             #+#    #+#             */
+/*   Updated: 2025/05/23 00:14:33 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Assignment name  : swap_bits
-Expected files   : swap_bits.c
-Allowed functions:
+Assignment name  : paramsum
+Expected files   : paramsum.c
+Allowed functions: write
 --------------------------------------------------------------------------------
 
-Write a function that takes a byte, swaps its halves (like the example) and
-returns the result.
+Write a program that displays the number of arguments passed to it, followed by
+a newline.
 
-Your function must be declared as follows:
-
-unsigned char	swap_bits(unsigned char octet);
+If there are no arguments, just display a 0 followed by a newline.
 
 Example:
 
-  1 byte
-_____________
- 0100 | 0001
-     \ /
-     / \
- 0001 | 0100 */
+$>./paramsum 1 2 3 5 7 24
+6
+$>./paramsum 6 12 24 | cat -e
+3$
+$>./paramsum | cat -e
+0$
+$>
+*/
 
 #include "exam.h"
 
-unsigned char	swap_bits(unsigned char octet)
+int	main(int argc, char **argv)
 {
-	return ((octet << 4) | (octet >> 4));
+	int	i;
+
+	if (argc == 1)
+	{
+		write(1, "0\n", 2);
+		return (0);
+	}
+	i = 1;
+	while (i < argc)
+		i++;
+	ft_putnbr(i - 1);
+	ft_putchar('\n');
+	return (0);
 }

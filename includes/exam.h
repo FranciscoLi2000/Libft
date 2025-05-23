@@ -6,7 +6,7 @@
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:00:19 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/21 18:37:51 by yufli            ###   ########.fr       */
+/*   Updated: 2025/05/22 22:40:21 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXAM_H
 
 # include <unistd.h>
+# include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
 
@@ -34,5 +35,10 @@ int		is_power_of_2(unsigned int n);
 int		max(int* tab, unsigned int len);
 void	print_bits(unsigned char octet);
 unsigned char	reverse_bits(unsigned char octet);
+unsigned char	swap_bits(unsigned char octet);
+int	ft_atoi_base(const char *str, int str_base);
+int     *ft_range(int start, int end);
+int     *ft_rrange(int start, int end);
+unsigned int	lcm(unsigned int a, unsigned int b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:42:52 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/21 18:43:13 by yufli            ###   ########.fr       */
+/*   Updated: 2025/05/22 17:15:58 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,33 @@ $
 $>./wdmatch | cat -e
 $
 */
+
+#include <unistd.h>
+
+void	wdmatch(char *s1, char *s2)
+{
+	int	i;
+	int	len;
+
+	len = 0;
+	while (s1[len])
+		len++;
+	i = 0;
+	while (i < len && *s2)
+	{
+		if (s1[i] == *s2++)
+			i++;
+	}
+	if (i == len)
+		write(1, s1, len);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 3)
+	{
+		wdmatch(argv[1], argv[2]);
+	}
+	write(1, "\n", 1);
+	return (0);
+}
