@@ -28,3 +28,28 @@ Doubles must be preserved.
 Input is always coherent.
 */
 
+#include "exam.h"
+
+void	sort_int_tab(int *tab, unsigned int size)
+{
+	unsigned int	i;
+	unsigned int	j;
+	int		tmp;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i;
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+			{
+				tmp = tab[j];
+				tab[i] = tab[j];
+				tab[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}

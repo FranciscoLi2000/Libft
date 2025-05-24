@@ -18,6 +18,12 @@
 # include <limits.h>
 # include <stdio.h>
 
+typedef struct s_list
+{
+	struct s_list	*next;
+	void		*data;
+}	t_list;
+
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(int nbr);
@@ -40,5 +46,8 @@ int	ft_atoi_base(const char *str, int str_base);
 int     *ft_range(int start, int end);
 int     *ft_rrange(int start, int end);
 unsigned int	lcm(unsigned int a, unsigned int b);
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
+void	sort_int_tab(int *tab, unsigned int size);
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int));
 
 #endif
