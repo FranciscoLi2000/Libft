@@ -50,4 +50,13 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
 void	sort_int_tab(int *tab, unsigned int size);
 t_list	*sort_list(t_list *lst, int (*cmp)(int, int));
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+void	fill_recursive(char **tab, t_point size, int row, int col, char target_char);
+
 #endif
