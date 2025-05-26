@@ -82,9 +82,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## 📬 Contact
 For any questions or feedback, feel free to reach out:
-
-GitHub: FranciscoLi2000
-
 Email: liyufeng577@gmail.com
 
 This project was completed as part of the 42 Barcelona curriculum.
