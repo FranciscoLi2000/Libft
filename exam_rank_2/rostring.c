@@ -53,6 +53,7 @@ $>
 void	rotstring(char *str)
 {
 	int	i;
+	int	first_word;
 
 	i = 0;
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
