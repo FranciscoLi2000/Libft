@@ -10,7 +10,6 @@ Libft/
 ├── libft/ # Core library functions
 ├── lib_bonus/ # Bonus functions (linked list operations)
 ├── includes/ # Header files
-├── exam_rank_2/ # Exam preparation exercises
 ├── Makefile # Build instructions
 ├── LICENSE # License information
 ├── README.md # Project documentation
@@ -73,9 +72,6 @@ Output functions: ft_putchar_fd, ft_putstr_fd, ft_putendl_fd, ft_putnbr_fd
 Implementation of singly linked list operations:
 
 ft_lstnew, ft_lstadd_front, ft_lstadd_back, ft_lstdelone, ft_lstclear, ft_lstiter, ft_lstmap, ft_lstsize, ft_lstlast
-
-### Exam Preparation (exam_rank_2/)
-A collection of exercises to prepare for the 42 exams, focusing on algorithmic problem-solving and efficient coding practices.
 
 ## 📄 License
 This project is licensed under the MIT License. See the LICENSE file for details.
