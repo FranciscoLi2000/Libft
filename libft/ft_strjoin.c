@@ -1,42 +1,47 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 15:37:03 by yufli             #+#    #+#             */
-/*   Updated: 2024/12/31 19:46:18 by yufli            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_strs_len(int size, char **strs, char *sep)
 {
-	char	*str;
-	int		s1_len;
-	int		s2_len;
-	int		i;
+	int	len;
+	int	i;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	str = malloc((s1_len + s2_len + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
+	len = 0;
 	i = 0;
-	while (i < s1_len + s2_len)
+	while (i < size)
 	{
-		if (i < s1_len)
-			str[i] = s1[i];
-		else
-			str[i] = s2[i - s1_len];
+		len += ft_strlen(strs[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	len += (size - 1) * ft_strlen(sep);
+	return (len);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*joined;
+	char	*tmp;
+	int		i;
+	int		total_len;
+
+	if (size == 0)
+	{
+		joined = (char *)malloc(1);
+		if (joined)
+			joined[0] = '\0';
+		return (joined);
+	}
+	total_len = ft_strs_len(size, strs, sep);
+	joined = (char *)malloc((total_len + 1) * sizeof(char));
+	if (!joined)
+		return (NULL);
+	tmp = joined;
+	i = 0;
+	while (i < size)
+	{
+		tmp = ft_strcpy(tmp, strs[i]);
+		if (i < size - 1)
+			tmp = ft_strcpy(tmp, sep);
+		i++;
+	}
+	return (joined);
 }
