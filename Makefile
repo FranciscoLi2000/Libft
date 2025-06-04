@@ -5,151 +5,76 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/19 11:28:06 by yufli             #+#    #+#              #
-#    Updated: 2025/05/19 12:05:27 by yufli            ###   ########.fr        #
+#    Created: 2025/06/04 09:52:32 by yufli             #+#    #+#              #
+#    Updated: 2025/06/04 09:53:27 by yufli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Nombre de la librería
-NAME = libft.a
+NAME		= libft.a
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -I includes
+AR			= ar rcs
+RM			= rm -f
 
-# Directorios
-SRCDIR = libft
-BONUSDIR = lib_bonus
-INCDIR = includes
-OBJDIR = obj
+# Colors
+GREEN		= \033[0;32m
+YELLOW		= \033[1;33m
+BLUE		= \033[1;34m
+RED			= \033[0;31m
+RESET		= \033[0m
 
-# Archivos fuente
-SRCS = $(addprefix $(SRCDIR)/, \
-	ft_atoi.c \
-	ft_bzero.c \
-	ft_calloc.c \
-	ft_isalnum.c \
-	ft_isalpha.c \
-	ft_isascii.c \
-	ft_isdigit.c \
-	ft_isprint.c \
-	ft_itoa.c \
-	ft_memchr.c \
-	ft_memcmp.c \
-	ft_memcpy.c \
-	ft_memmove.c \
-	ft_memset.c \
-	ft_putchar_fd.c \
-	ft_putendl_fd.c \
-	ft_putnbr_fd.c \
-	ft_putstr_fd.c \
-	ft_split.c \
-	ft_strchr.c \
-	ft_strdup.c \
-	ft_striteri.c \
-	ft_strjoin.c \
-	ft_strlcat.c \
-	ft_strlcpy.c \
-	ft_strlen.c \
-	ft_strmapi.c \
-	ft_strncmp.c \
-	ft_strnstr.c \
-	ft_strrchr.c \
-	ft_strtrim.c \
-	ft_substr.c \
-	ft_tolower.c \
-	ft_toupper.c \
-)
+SRCS		= libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
+			  libft/ft_isdigit.c libft/ft_isprint.c libft/ft_strlen.c \
+			  libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c \
+			  libft/ft_memmove.c libft/ft_strlcpy.c libft/ft_strlcat.c \
+			  libft/ft_strchr.c libft/ft_strrchr.c libft/ft_strncmp.c \
+			  libft/ft_memchr.c libft/ft_memcmp.c libft/ft_strnstr.c \
+			  libft/ft_atoi.c libft/ft_itoa.c libft/ft_strdup.c \
+			  libft/ft_substr.c libft/ft_strjoin.c libft/ft_strtrim.c \
+			  libft/ft_split.c libft/ft_strmapi.c libft/ft_striteri.c \
+			  libft/ft_putchar_fd.c libft/ft_putstr_fd.c \
+			  libft/ft_putendl_fd.c libft/ft_putnbr_fd.c \
+			  libft/ft_tolower.c libft/ft_toupper.c libft/ft_putchar.c \
+			  libft/ft_putstr.c libft/ft_strcmp.c libft/ft_strcpy.c \
+			  libft/ft_strncpy.c libft/ft_strncat.c libft/ft_strcat.c \
+			  libft/ft_strspn.c libft/ft_strcspn.c libft/ft_strpbrk.c \
+			  libft/ft_strstr.c libft/ft_strrev.c libft/ft_range.c \
+			  libft/ft_rrange.c libft/ft_atoi_base.c libft/ft_isspace.c \
+			  libft/is_power_of_2.c libft/lcm.c libft/max.c \
+			  libft/print_bits.c libft/reverse_bits.c libft/swap_bits.c \
+			  libft/ft_is_prime.c
 
-# Archivos bonus
-BONUS_SRCS = $(addprefix $(BONUSDIR)/, \
-	ft_lstadd_back_bonus.c \
-	ft_lstadd_front_bonus.c \
-	ft_lstclear_bonus.c \
-	ft_lstdelone_bonus.c \
-	ft_lstiter_bonus.c \
-	ft_lstlast_bonus.c \
-	ft_lstmap_bonus.c \
-	ft_lstnew_bonus.c \
-	ft_lstsize_bonus.c \
-)
+BONUS_SRCS	= lib_bonus/ft_lstnew_bonus.c lib_bonus/ft_lstadd_front_bonus.c \
+			  lib_bonus/ft_lstadd_back_bonus.c lib_bonus/ft_lstsize_bonus.c \
+			  lib_bonus/ft_lstlast_bonus.c lib_bonus/ft_lstdelone_bonus.c \
+			  lib_bonus/ft_lstclear_bonus.c lib_bonus/ft_lstiter_bonus.c \
+			  lib_bonus/ft_lstmap_bonus.c lib_bonus/ft_list_foreach.c \
+			  lib_bonus/ft_list_remove_if.c lib_bonus/sort_int_tab.c \
+			  lib_bonus/sort_list.c
 
-# Archivos objeto
-OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-BONUS_OBJS = $(BONUS_SRCS:$(BONUSDIR)/%.c=$(OBJDIR)/%.o)
+OBJS		= $(SRCS:.c=.o)
+BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
 
-# Compilador y flags
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-INCLUDES = -I$(INCDIR)
-
-# Comandos
-AR = ar rcs
-RM = rm -f
-
-# Colores para output
-GREEN = \033[0;32m
-RED = \033[0;31m
-YELLOW = \033[0;33m
-NC = \033[0m # No Color
-
-# Regla principal
 all: $(NAME)
 
-# Crear la librería
 $(NAME): $(OBJS)
-	@echo "$(YELLOW)Creando librería $(NAME)...$(NC)"
+	@echo "$(BLUE)[Compiling]$(RESET) Creating $(NAME)..."
 	@$(AR) $(NAME) $(OBJS)
-	@echo "$(GREEN)✓ $(NAME) creada exitosamente!$(NC)"
+	@echo "$(GREEN)[Success]$(RESET) Library built."
 
-# Compilar archivos objeto del directorio principal
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@mkdir -p $(OBJDIR)
-	@echo "$(YELLOW)Compilando $<...$(NC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-# Compilar archivos objeto del directorio bonus
-$(OBJDIR)/%.o: $(BONUSDIR)/%.c
-	@mkdir -p $(OBJDIR)
-	@echo "$(YELLOW)Compilando $<...$(NC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-# Regla bonus
 bonus: $(OBJS) $(BONUS_OBJS)
-	@echo "$(YELLOW)Creando librería con bonus $(NAME)...$(NC)"
+	@echo "$(YELLOW)[Bonus]$(RESET) Compiling with bonus files..."
 	@$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
-	@echo "$(GREEN)✓ $(NAME) con bonus creada exitosamente!$(NC)"
+	@echo "$(GREEN)[Success]$(RESET) Bonus library built."
 
-# Limpiar archivos objeto
 clean:
-	@echo "$(RED)Eliminando archivos objeto...$(NC)"
-	@$(RM) -r $(OBJDIR)
-	@echo "$(GREEN)✓ Archivos objeto eliminados!$(NC)"
+	@$(RM) $(OBJS) $(BONUS_OBJS)
+	@echo "$(RED)[Clean]$(RESET) Object files removed."
 
-# Limpiar todo
 fclean: clean
-	@echo "$(RED)Eliminando $(NAME)...$(NC)"
 	@$(RM) $(NAME)
-	@echo "$(GREEN)✓ $(NAME) eliminada!$(NC)"
+	@echo "$(RED)[Fclean]$(RESET) Library removed."
 
-# Recompilar todo
 re: fclean all
 
-# Reglas especiales
-.PHONY: all clean fclean re bonus
-
-# Crear un target para mostrar información
-info:
-	@echo "$(YELLOW)=== Información del proyecto ===$(NC)"
-	@echo "Nombre de la librería: $(NAME)"
-	@echo "Archivos fuente: $(words $(SRCS)) archivos"
-	@echo "Archivos bonus: $(words $(BONUS_SRCS)) archivos"
-	@echo "Compilador: $(CC)"
-	@echo "Flags: $(CFLAGS)"
-	@echo "$(YELLOW)===============================$(NC)"
-
-# Target para verificar norminette (opcional)
-norm:
-	@echo "$(YELLOW)Verificando norminette...$(NC)"
-	@norminette $(SRCS) $(BONUS_SRCS) $(INCDIR)/libft.h || true
-
-# Target para testing (opcional)
-test: $(NAME)
-	@echo "$(YELLOW)Compilando programa de prueba...$(NC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) -L. -lft test.c -o test_libft 2>/dev/null || echo "$(RED)No se encontró test.c$(NC)"
+.PHONY: all bonus clean fclean re

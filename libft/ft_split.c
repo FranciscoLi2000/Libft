@@ -6,82 +6,82 @@
 /*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 11:37:00 by yufli             #+#    #+#             */
-/*   Updated: 2025/05/23 21:03:41 by yufli            ###   ########.fr       */
+/*   Updated: 2025/06/04 03:51:55 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Assignment name  : ft_split
-Expected files   : ft_split.c
-Allowed functions: malloc
---------------------------------------------------------------------------------
-
-Write a function that takes a string, splits it into words, and returns them as
-a NULL-terminated array of strings.
-
-A "word" is defined as a part of a string delimited either by spaces/tabs/new
-lines, or by the start/end of the string.
-
-Your function must be declared as follows:
-
-char    **ft_split(char *str);
-*/
-
 #include "libft.h"
 
-static int	word_len(char const *s, char c)
+static int	is_separator(char c)
 {
-	int	len;
+	return (c == ' ');
+}
+
+static int	word_count(char *str)
+{
+	int	count;
+	int	in_word;
+
+	count = 0;
+	in_word = 0;
+	while (*str)
+	{
+		if (!is_separator(*str) && !in_word)
+		{
+			in_word = 1;
+			count++;
+		}
+		else if (is_separator(*str))
+			in_word = 0;
+		str++;
+	}
+	return (count);
+}
+
+static char	*malloc_word(char *start)
+{
+	char	*word;
+	int		len;
 
 	len = 0;
-	while (s[len] && s[len] != c)
+	while (start[len] && !is_separator(start[len]))
 		len++;
-	return (len);
+	word = (char *)malloc((len + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	len = 0;
+	while (start[len] && !is_separator(start[len]))
+	{
+		word[len] = start[len];
+		len++;
+	}
+	word[len] = '\0';
+	return (word);
 }
 
-static void	free_all(char **res, int i)
-{
-	while (--i >= 0)
-		free(res[i]);
-	free(res);
-}
-
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *str)
 {
 	char	**result;
 	int		i;
-	int		j;
-	int		word_length;
-	int		word_count;
 
 	i = 0;
-	word_count = 0;
-	if (!s)
+	if (!str)
 		return (NULL);
-	j = 0;
-	while (s[j])
-	{
-		if (s[j] != c && (j == 0 || s[j - 1] == c))
-			word_count++;
-		j++;
-	}
-	result = malloc(sizeof(char *) * (word_count + 1));
+	result = (char **)malloc((word_count(str) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	while (*s)
+	while (*str)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		while (*str && is_separator(*str))
+			str++;
+		if (*str)
 		{
-			word_length = word_len(s, c);
-			result[i] = ft_substr(s, 0, word_length);
-			if (!result[i++])
-			{
-				free_all(result, i);
+			result[i] = malloc_word(str);
+			if (!result[i])
 				return (NULL);
-			}
-			s += word_length;
+			i++;
+			while (*str && !is_separator(*str))
+				str++;
 		}
 	}
 	result[i] = NULL;
