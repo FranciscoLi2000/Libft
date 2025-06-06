@@ -6,7 +6,7 @@
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 00:37:00 by yufli             #+#    #+#             */
-/*   Updated: 2025/06/04 00:37:09 by yufli            ###   ########.fr       */
+/*   Updated: 2025/06/06 18:41:27 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 char	*ft_strdup(char *src)
 {
-	char	*copy;
-	int		i;
+	size_t	len;
+	size_t	i;
+	char	*dup;
 
-	copy = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!copy)
-		return (NULL);
+	len = ft_strlen(src);
+	dup = malloc(len + 1);
 	i = 0;
+	if (!dup)
+		return (NULL);
 	while (src[i])
 	{
-		copy[i] = src[i];
+		dup[i] = src[i];
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	dup[i] = '\0';
+	return (dup);
 }

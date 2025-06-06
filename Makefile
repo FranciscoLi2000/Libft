@@ -6,75 +6,82 @@
 #    By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 09:52:32 by yufli             #+#    #+#              #
-#    Updated: 2025/06/04 09:53:27 by yufli            ###   ########.fr        #
+#    Updated: 2025/06/06 18:11:56 by yufli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# ========== CONFIG ==========
 NAME		= libft.a
+
+# Directories
+LIB_DIR		= libft
+GNL_DIR		= get_next_line
+OBJDIR		= obj
+INCDIR		= includes
+
+# Source files split by module
+LIBFT_FILES	= \
+	ft_atoi_base.c ft_isalpha.c ft_isspace.c ft_memmove.c ft_putnbr.c \
+	ft_rrange.c ft_strcpy.c ft_strlcat.c ft_strncmp.c ft_strrev.c ft_swap.c max.c \
+	ft_atoi.c ft_isascii.c ft_itoa.c ft_memset.c ft_putnbr_fd.c ft_split.c \
+	ft_strcspn.c ft_strlcpy.c ft_strncpy.c ft_strspn.c ft_tolower.c print_bits.c \
+	ft_bzero.c ft_isdigit.c ft_memchr.c ft_putchar.c ft_putstr.c ft_strcat.c \
+	ft_strdup.c ft_strlen.c ft_strnstr.c ft_strstr.c ft_toupper.c reverse_bits.c \
+	ft_calloc.c ft_is_prime.c ft_memcmp.c ft_putchar_fd.c ft_putstr_fd.c \
+	ft_strchr.c ft_striteri.c ft_strmapi.c ft_strpbrk.c ft_strtrim.c \
+	is_power_of_2.c swap_bits.c ft_isalnum.c ft_isprint.c ft_memcpy.c \
+	ft_putendl_fd.c ft_range.c ft_strcmp.c ft_strjoin.c ft_strncat.c \
+	ft_strrchr.c ft_substr.c lcm.c
+
+GNL_FILES	= get_next_line.c
+
+SRC_FILES	= $(addprefix $(LIB_DIR)/, $(LIBFT_FILES)) \
+			  $(addprefix $(GNL_DIR)/, $(GNL_FILES))
+
+OBJ_FILES	= $(addprefix $(OBJDIR)/, $(notdir $(SRC_FILES:.c=.o)))
+
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I includes
+CFLAGS		= -Wall -Wextra -Werror -I$(INCDIR)
 AR			= ar rcs
 RM			= rm -f
+MKDIR		= mkdir -p
 
-# Colors
-GREEN		= \033[0;32m
-YELLOW		= \033[1;33m
-BLUE		= \033[1;34m
-RED			= \033[0;31m
-RESET		= \033[0m
+# ========== COLORS ==========
+GREEN	= \033[0;32m
+BLUE	= \033[0;34m
+RED		= \033[0;31m
+RESET	= \033[0m
 
-SRCS		= libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
-			  libft/ft_isdigit.c libft/ft_isprint.c libft/ft_strlen.c \
-			  libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c \
-			  libft/ft_memmove.c libft/ft_strlcpy.c libft/ft_strlcat.c \
-			  libft/ft_strchr.c libft/ft_strrchr.c libft/ft_strncmp.c \
-			  libft/ft_memchr.c libft/ft_memcmp.c libft/ft_strnstr.c \
-			  libft/ft_atoi.c libft/ft_itoa.c libft/ft_strdup.c \
-			  libft/ft_substr.c libft/ft_strjoin.c libft/ft_strtrim.c \
-			  libft/ft_split.c libft/ft_strmapi.c libft/ft_striteri.c \
-			  libft/ft_putchar_fd.c libft/ft_putstr_fd.c \
-			  libft/ft_putendl_fd.c libft/ft_putnbr_fd.c \
-			  libft/ft_tolower.c libft/ft_toupper.c libft/ft_putchar.c \
-			  libft/ft_putstr.c libft/ft_strcmp.c libft/ft_strcpy.c \
-			  libft/ft_strncpy.c libft/ft_strncat.c libft/ft_strcat.c \
-			  libft/ft_strspn.c libft/ft_strcspn.c libft/ft_strpbrk.c \
-			  libft/ft_strstr.c libft/ft_strrev.c libft/ft_range.c \
-			  libft/ft_rrange.c libft/ft_atoi_base.c libft/ft_isspace.c \
-			  libft/is_power_of_2.c libft/lcm.c libft/max.c \
-			  libft/print_bits.c libft/reverse_bits.c libft/swap_bits.c \
-			  libft/ft_is_prime.c
-
-BONUS_SRCS	= lib_bonus/ft_lstnew_bonus.c lib_bonus/ft_lstadd_front_bonus.c \
-			  lib_bonus/ft_lstadd_back_bonus.c lib_bonus/ft_lstsize_bonus.c \
-			  lib_bonus/ft_lstlast_bonus.c lib_bonus/ft_lstdelone_bonus.c \
-			  lib_bonus/ft_lstclear_bonus.c lib_bonus/ft_lstiter_bonus.c \
-			  lib_bonus/ft_lstmap_bonus.c lib_bonus/ft_list_foreach.c \
-			  lib_bonus/ft_list_remove_if.c lib_bonus/sort_int_tab.c \
-			  lib_bonus/sort_list.c
-
-OBJS		= $(SRCS:.c=.o)
-BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
+# ========== RULES ==========
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "$(BLUE)[Compiling]$(RESET) Creating $(NAME)..."
-	@$(AR) $(NAME) $(OBJS)
-	@echo "$(GREEN)[Success]$(RESET) Library built."
+$(NAME): $(OBJ_FILES)
+	@echo "$(BLUE)🔧 Archiving $(NAME)...$(RESET)"
+	$(AR) $(NAME) $(OBJ_FILES)
+	@echo "$(GREEN)Build complete!$(RESET)"
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	@echo "$(YELLOW)[Bonus]$(RESET) Compiling with bonus files..."
-	@$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
-	@echo "$(GREEN)[Success]$(RESET) Bonus library built."
+# Compile .c → obj/ .o
+$(OBJDIR)/%.o: $(LIB_DIR)/%.c | $(OBJDIR)
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o: $(GNL_DIR)/%.c | $(OBJDIR)
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Create obj directory
+$(OBJDIR):
+	@$(MKDIR) $(OBJDIR)
 
 clean:
-	@$(RM) $(OBJS) $(BONUS_OBJS)
-	@echo "$(RED)[Clean]$(RESET) Object files removed."
+	@echo "$(RED)Cleaning object files...$(RESET)"
+	$(RM) $(OBJ_FILES)
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo "$(RED)[Fclean]$(RESET) Library removed."
+	@echo "$(RED)Removing $(NAME)...$(RESET)"
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

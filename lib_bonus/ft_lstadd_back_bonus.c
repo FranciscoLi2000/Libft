@@ -6,13 +6,13 @@
 /*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:53:44 by yufli             #+#    #+#             */
-/*   Updated: 2025/02/15 07:11:01 by yufli            ###   ########.fr       */
+/*   Updated: 2025/06/06 17:36:03 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
 	t_list	*last_node;
 
