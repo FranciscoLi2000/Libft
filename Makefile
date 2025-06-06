@@ -6,7 +6,7 @@
 #    By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 09:52:32 by yufli             #+#    #+#              #
-#    Updated: 2025/06/06 18:11:56 by yufli            ###   ########.fr        #
+#    Updated: 2025/06/06 19:33:37 by yufli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME		= libft.a
 
 # Directories
 LIB_DIR		= libft
-GNL_DIR		= get_next_line
 OBJDIR		= obj
 INCDIR		= includes
 
@@ -31,19 +30,16 @@ LIBFT_FILES	= \
 	ft_strchr.c ft_striteri.c ft_strmapi.c ft_strpbrk.c ft_strtrim.c \
 	is_power_of_2.c swap_bits.c ft_isalnum.c ft_isprint.c ft_memcpy.c \
 	ft_putendl_fd.c ft_range.c ft_strcmp.c ft_strjoin.c ft_strncat.c \
-	ft_strrchr.c ft_substr.c lcm.c
+	ft_strrchr.c ft_substr.c lcm.c sort_int_tab.c
 
-GNL_FILES	= get_next_line.c
-
-SRC_FILES	= $(addprefix $(LIB_DIR)/, $(LIBFT_FILES)) \
-			  $(addprefix $(GNL_DIR)/, $(GNL_FILES))
+SRC_FILES	= $(addprefix $(LIB_DIR)/, $(LIBFT_FILES))
 
 OBJ_FILES	= $(addprefix $(OBJDIR)/, $(notdir $(SRC_FILES:.c=.o)))
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -I$(INCDIR)
 AR			= ar rcs
-RM			= rm -f
+RM			= rm -rf
 MKDIR		= mkdir -p
 
 # ========== COLORS ==========
@@ -76,7 +72,7 @@ $(OBJDIR):
 
 clean:
 	@echo "$(RED)Cleaning object files...$(RESET)"
-	$(RM) $(OBJ_FILES)
+	$(RM) $(OBJDIR) $(OBJ_FILES)
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(RESET)"
