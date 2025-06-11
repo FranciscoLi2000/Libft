@@ -6,7 +6,7 @@
 /*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 11:37:00 by yufli             #+#    #+#             */
-/*   Updated: 2025/06/06 18:30:57 by yufli            ###   ########.fr       */
+/*   Updated: 2025/06/11 20:20:35 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	ft_fill_split(char **res, const char *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
-	int			count;
+	int		count;
 
 	if (!s)
 		return (NULL);
