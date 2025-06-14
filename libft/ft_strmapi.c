@@ -3,28 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 15:45:06 by yufli             #+#    #+#             */
-/*   Updated: 2024/12/31 18:29:10 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 17:21:00 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 17:21:33 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	int		len;
-	int		i;
+	char			*str;
+	unsigned int	i;
+	unsigned int	len;
 
 	if (!s || !f)
 		return (NULL);
-	len = 0;
-	while (s[len] != '\0')
-		len++;
+	len = ft_strlen(s);
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);

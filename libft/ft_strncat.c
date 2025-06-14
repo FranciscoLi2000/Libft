@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 00:39:18 by yufli             #+#    #+#             */
-/*   Updated: 2025/06/04 00:39:27 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 17:55:55 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 17:57:28 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strncat(char *dest, const char *src, unsigned int nb)
 {
 	unsigned int	i;
 	unsigned int	j;

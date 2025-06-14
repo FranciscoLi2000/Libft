@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:00:05 by yufli             #+#    #+#             */
-/*   Updated: 2024/12/31 20:02:24 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 17:26:57 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 17:29:51 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, unsigned int len)

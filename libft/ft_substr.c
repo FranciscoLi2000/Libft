@@ -3,41 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 15:33:45 by yufli             #+#    #+#             */
-/*   Updated: 2025/01/02 19:26:06 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 17:50:09 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 21:30:20 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+//#include "libft.h"
+#include <stddef.h>
 #include <stdlib.h>
-#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, unsigned int len)
 {
 	unsigned int	i;
-	char			*substr;
+	char			*result;
 
-	if (start >= (unsigned int)ft_strlen(s))
-	{
-		substr = malloc(sizeof(char));
-		if (substr == NULL)
-			return (NULL);
-		substr[0] = '\0';
-		return (substr);
-	}
-	if (len > (unsigned int)ft_strlen(s) - start)
-		len = (unsigned int)ft_strlen(s) - start;
-	substr = malloc((len + 1) * sizeof(char));
-	if (substr == NULL || s == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len && s[start + i] != '\0')
+	result = malloc((len + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	while (i < len && s[start + i])
 	{
-		substr[i] = s[start + i];
+		result[i] = s[start + i];
 		i++;
 	}
-	substr[i] = '\0';
-	return (substr);
+	result[i] = '\0';
+	return (result);
 }

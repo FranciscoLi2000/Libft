@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 17:59:36 by yufli             #+#    #+#             */
-/*   Updated: 2024/12/31 20:06:18 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 16:34:27 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 16:39:59 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_calloc(unsigned int nmemb, unsigned int size)
 {
-	unsigned int	i;
-	void			*ptr;
+	void	*ptr;
 
-	if (size != 0 && nmemb > (unsigned int)(-1) / size)
+	// 防止整数溢出：如果 nmemb * size 超过 size_t 范围
+	if (size != 0 && nmemb > SIZE_MAX / size)
 		return (NULL);
+
 	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
+	if (!ptr)
 		return (NULL);
-	i = 0;
-	while ((unsigned int)i < nmemb * size)
-	{
-		((unsigned char *)ptr)[i] = 0;
-		i++;
-	}
+
+	// 推荐调用自己实现的 ft_bzero
+	ft_bzero(ptr, nmemb * size);
+
+	/* 如果不允许调用 ft_bzero，也可以手动写循环
+	size_t i = 0;
+	while (i < nmemb * size)
+		((unsigned char *)ptr)[i++] = 0; */
+
 	return (ptr);
 }

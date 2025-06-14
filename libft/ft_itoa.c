@@ -3,54 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 15:43:37 by yufli             #+#    #+#             */
-/*   Updated: 2024/12/31 19:44:45 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 16:45:07 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 16:54:19 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_itoa(int n);
-
-unsigned int	num_len(int n)
+static unsigned int	num_len(int n)
 {
-	int	len;
+	unsigned int	len;
+	long			num;
 
-	if (n <= 0)
+	len = 0;
+	num = n;
+	if (num <= 0)
 	{
 		len = 1;
-		while (n)
-		{
-			n = n / 10;
-			len++;
-		}
+		num = -num;
 	}
-	else
+	while (num > 0)
 	{
-		len = 0;
-		while (n)
-		{
-			n = n / 10;
-			len++;
-		}
+		num /= 10;
+		len++;
 	}
 	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	long	num;
-	int		len;
+	unsigned int	len;
+	long			num;
+	char			*str;
 
 	len = num_len(n);
 	num = n;
 	str = malloc((len + 1) * sizeof(char));
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	if (num < 0)
@@ -62,9 +53,8 @@ char	*ft_itoa(int n)
 		str[0] = '0';
 	while (num > 0)
 	{
-		len--;
-		str[len] = num % 10 + '0';
-		num = num / 10;
+		str[--len] = (num % 10) + '0';
+		num /= 10;
 	}
 	return (str);
 }

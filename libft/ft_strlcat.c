@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yufli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: yufli <yufli@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 18:21:59 by yufli             #+#    #+#             */
-/*   Updated: 2024/12/30 12:38:48 by yufli            ###   ########.fr       */
+/*   Created: 2025/06/14 17:58:01 by yufli             #+#    #+#             */
+/*   Updated: 2025/06/14 17:58:53 by yufli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 int	ft_strlcat(char *dest, const char *src, unsigned int size)
