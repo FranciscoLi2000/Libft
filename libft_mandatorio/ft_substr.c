@@ -1,11 +1,9 @@
-/* Regla mental: “Empiezo en start, copio como mucho len, pero nunca más allá del final.” */
-
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
 	size_t	s_len;
+	size_t	i;
 	char	*sub;
 
 	if (!s)
@@ -15,7 +13,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > s_len - start)
 		len = s_len - start;
-	sub = malloc(len + 1);
+	sub = (char *)malloc(len + 1);
 	if (!sub)
 		return (NULL);
 	i = 0;
@@ -27,7 +25,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-/* Truco para recordarlo:
- * start fuera → string vacía.
- * len demasiado grande → se ajusta.
- */

@@ -1,13 +1,3 @@
-/* Esta es la jefa final, pero con pasos claros es easy.
- *
- * Regla mental en 5 pasos:
- * 1.	recorrer lista original
- * 2.	aplicar f al contenido
- * 3.	crear nuevo nodo
- * 4.	añadirlo a la nueva lista
- * 5.	si falla → limpiar todo y NULL
- */
-
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -17,8 +7,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	void	*new_content;
 
 	new_list = NULL;
-	if (!f || !del)
-		return (NULL);
 	while (lst)
 	{
 		new_content = f(lst->content);
@@ -34,5 +22,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_list);
 }
-/* Clave absoluta: si algo falla → no leaks, no mercy, limpiar todo. */
-

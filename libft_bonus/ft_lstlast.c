@@ -1,5 +1,3 @@
-/* Regla mental: avanzar hasta que next == NULL */
-
 #include "libft.h"
 
 t_list	*ft_lstlast(t_list *lst)
