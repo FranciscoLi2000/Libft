@@ -1,14 +1,3 @@
----
-AIGC:
-    ContentProducer: Minimax Agent AI
-    ContentPropagator: Minimax Agent AI
-    Label: AIGC
-    ProduceID: "00000000000000000000000000000000"
-    PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 304502201cc9fc4e80148cf16653397344d275d684577f6e0a5811ce4b13a86fde35c654022100b3c7b1db60c6350a2fe75f86ebdd0918303f9e4199d99b5ef7db5c3cdbb9cdf0
-    ReservedCode2: 304502200a2aec3884ad07d767ca2e8d442296c2044a18fcfb08e8920061d7320c949a24022100d7a8d69631998c0462c231dd13fdb92437845981b9159b9490a01ca405d11788
----
-
 # 第12章：存储类别、链接和内存管理 - 动态内存分配核心内容
 
 ## 动态内存分配概述

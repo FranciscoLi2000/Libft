@@ -1,14 +1,3 @@
----
-AIGC:
-    ContentProducer: Minimax Agent AI
-    ContentPropagator: Minimax Agent AI
-    Label: AIGC
-    ProduceID: "00000000000000000000000000000000"
-    PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 30440220438b5785155b4482b0188a4c068bdbaead78aad0d8b718cc31f59ca9427684bc022016526ad699298a61ee58a5f02be29f6f83f93eecdeaa1d119eae49799ace21f1
-    ReservedCode2: 3045022100ab4add7c27b4afdd60fab3f7d3fb6353b8139680aed0cbe4e6ffcb4b5a319428022069f272e01750dc644ac98153d6a1a2576de2ace0b00b00f6b38d0c0371de354a
----
-
 # 第16章 预处理器 核心内容
 
 ## 16.1 概述

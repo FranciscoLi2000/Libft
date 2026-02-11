@@ -1,17 +1,6 @@
----
-AIGC:
-    ContentProducer: Minimax Agent AI
-    ContentPropagator: Minimax Agent AI
-    Label: AIGC
-    ProduceID: "00000000000000000000000000000000"
-    PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 30460221008268aa335a90f95c96226207ad08381e7b304960b99fa59ba97578e177523651022100ce3de3f301e2c14c90bcf538af192ba19982a595f26f7ce3716b3af05e6ecf7a
-    ReservedCode2: 30450220407a4124149c9e6930e90ad1b4c8174e609235f51f1076a9021d31f9c28ec29e022100e3d809201576010161a694336d3ebf88082d6f40672c614202a5e8ff2687a2ca
----
+# Libft静态库重构项目：真实版本实施指南
 
-# libft静态库重构项目：真实版本实施指南
-
-**作者：** MiniMax Agent  
+**作者：** Yufeng Li  
 **日期：** 2026-02-09  
 
 ## 📋 项目概览

@@ -1,14 +1,3 @@
----
-AIGC:
-    ContentProducer: Minimax Agent AI
-    ContentPropagator: Minimax Agent AI
-    Label: AIGC
-    ProduceID: "00000000000000000000000000000000"
-    PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 304502200f3a66ca94487296d43cc69f7cb3f172dc0be675f6ced4d3bea9b46a957d6e86022100cc83e44fdfae7a4a0b86869a2ddb39d73eec7691a065c82b1848a5ebc472f70a
-    ReservedCode2: 304502205d4e9432c0c31f98c95f574a035dec5bab399f27520291936cd56b096271f7fc022100b0063a3e3b3ef8358774c1d22bd4e79cab1761ce6a5342e129c8dde3d41e2b1f
----
-
 # 第14章：结构和其他数据形式 - 核心内容
 
 ## 结构体基础

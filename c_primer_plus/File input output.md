@@ -1,14 +1,3 @@
----
-AIGC:
-    ContentProducer: Minimax Agent AI
-    ContentPropagator: Minimax Agent AI
-    Label: AIGC
-    ProduceID: "00000000000000000000000000000000"
-    PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 3046022100e45e2b19e3e2ca80d5c3f1f6dccbd636920e23be4ba91ecedce99d5ad6c665dc022100a09664be92286f9b52ee15bf73305ed8eb05174c8b9e1c68b684e85bab33d37a
-    ReservedCode2: 304402200b0cd1cf465943b06de3bd9b031ddd8fdecbf3f7374bee2e1f2ec2b722df28ea022009e737adcb617a59e3c51a83b2144bd1c3b5e9ed32ee64e9600541c964288b74
----
-
 # 第13章：文件输入/输出 - 核心内容
 
 ## 文件与文件通信基础
