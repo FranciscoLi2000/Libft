@@ -1,4 +1,4 @@
-NAME = libft.a
+NAME = libftprintf.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -34,7 +34,15 @@ SRCS = \
        $(SRC_DIR)/ft_putendl_fd.c \
        $(SRC_DIR)/ft_putnbr_fd.c \
        $(SRC_DIR)/ft_itoa.c \
-       $(SRC_DIR)/ft_calloc.c
+       $(SRC_DIR)/ft_calloc.c \
+       \
+       $(SRC_DIR)/get_next_line.c \
+       $(SRC_DIR)/get_next_line_utils.c \
+       \
+       $(SRC_DIR)/printf.c \
+       $(SRC_DIR)/printf_char.c \
+       $(SRC_DIR)/printf_numbers.c \
+       $(SRC_DIR)/printf_printers.c
 
 BONUS_SRCS = \
 	     $(BONUS_DIR)/ft_lstnew_bonus.c \
@@ -73,7 +81,7 @@ TEST = tester
 TEST_SRC = test/tester.c
 
 test: $(NAME)
-	$(CC) $(CFLAGS) $(INCLUDES) $(TEST_SRC) $(NAME) -o $(TEST)
+	$(CC) $(CFLAGS) $(INCLUDES) -D BUFFER_SIZE=42 $(TEST_SRC) $(NAME) -o $(TEST)
 	./$(TEST)
 
 .PHONY: all clean fclean re bonus test
