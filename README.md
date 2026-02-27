@@ -5,34 +5,34 @@ A compact, well-documented README explaining how to use every function included 
 ⸻
 
 ## Table of contents
-•	About
-•	Build / Installation
-•	Libft — Mandatory (replacements for libc)
-•	Libft — Additional functions
-•	Bonus — Linked list helpers
-•	get_next_line
-•	ft_printf
-•	Notes & edge-cases
-•	Contributing
-•	License
+	•	About
+	•	Build / Installation
+	•	Libft — Mandatory (replacements for libc)
+	•	Libft — Additional functions
+	•	Bonus — Linked list helpers
+	•	get_next_line
+	•	ft_printf
+	•	Notes & edge-cases
+	•	Contributing
+	•	License
 
 ⸻
 
 ## About
 
-This repository contains implementations of common C utility functions used in the 42 school projects:
-•	libft — reimplementations of useful libc functions plus helper utilities.
-•	get_next_line — read a file descriptor line-by-line.
-•	ft_printf — a mini printf supporting common specifiers.
+	This repository contains implementations of common C utility functions used in the 42 school projects:
+	•	libft — reimplementations of useful libc functions plus helper utilities.
+	•	get_next_line — read a file descriptor line-by-line.
+	•	ft_printf — a mini printf supporting common specifiers.
 
-Use these functions as drop-in helpers in small C projects or as practice for systems programming fundamentals.
+	Use these functions as drop-in helpers in small C projects or as practice for systems programming fundamentals.
 
 ⸻
 
 ## Build / Installation
 
-Typical compilation with GCC (example to build a static library libft.a):
-`
+	Typical compilation with GCC (example to build a static library libft.a):
+	`
 	# compile object files
 	gcc -Wall -Wextra -Werror -c src/*.c -I includes
 	
@@ -41,16 +41,16 @@ Typical compilation with GCC (example to build a static library libft.a):
 	
 	# link into a program
 	gcc -o myprog main.c libft.a
-`
-Alternatively, include the src/ and includes/ in your Makefile and build as needed.
+
+	Alternatively, include the src/ and includes/ in your Makefile and build as needed.
 
 ⸻
 
 ## Libft — Mandatory (replacements for libc)
 
-Below each prototype is a short description and a tiny example showing how to use it.
+	Below each prototype is a short description and a tiny example showing how to use it.
 
-`
+	`
 	int ft_isalpha(int c);    // returns non-zero if c is alphabetic (a-z and A-Z)
 	int ft_isdigit(int c);    // returns non-zero if c is digit (0-9)
 	int ft_isalnum(int c);    // letter or digit
@@ -75,12 +75,12 @@ Below each prototype is a short description and a tiny example showing how to us
 	int     ft_atoi(const char *str);                    // ascii to int
 	void    *ft_calloc(size_t count, size_t size);       // allocate zeroed memory
 	char    *ft_strdup(const char *s);                   // duplicate string
-`
 
 ⸻
 
 ### Libft — Additional functions
-`
+
+	`
 	char    *ft_substr(const char *s, unsigned int start, size_t len);  // substring
 	char    *ft_strjoin(const char *s1, const char *s2);               // join two strings
 	char    *ft_strtrim(const char *s1, const char *set);              // trim set chars from ends
@@ -92,16 +92,16 @@ Below each prototype is a short description and a tiny example showing how to us
 	void    ft_putstr_fd(const char *s, int fd);                      // put string to fd
 	void    ft_putendl_fd(const char *s, int fd);                     // put string + '\n'
 	void    ft_putnbr_fd(int n, int fd);                              // put integer to fd
-`
-•	ft_split returns a NULL-terminated array; free each element then the array itself.
-•	ft_substr returns an allocated string; returns "" (empty string) for start >= strlen(s).
+
+	•	ft_split returns a NULL-terminated array; free each element then the array itself.
+	•	ft_substr returns an allocated string; returns "" (empty string) for start >= strlen(s).
 
 ⸻
 
 ### Bonus — Linked list helpers
 
-Linked list struct:
-`
+	Linked list struct:
+	`
 	typedef struct s_list
 	{
 		void            *content;
@@ -118,30 +118,30 @@ Linked list struct:
 	void    ft_lstclear(t_list **lst, void (*del)(void *));
 	void    ft_lstiter(t_list *lst, void (*f)(void *));
 	t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-`
-•	ft_lstdelone frees a single node using del.
-•	ft_lstmap returns a new list where each node content is the result of f; del cleans if allocation fails.
+
+	•	ft_lstdelone frees a single node using del.
+	•	ft_lstmap returns a new list where each node content is the result of f; del cleans if allocation fails.
 
 ⸻
 
 ## Get next line
 
-`
+	`
 	char    *get_next_line(int fd);
 	size_t  ft_gnl_strlen(const char *s);
 	char    *ft_gnl_strchr(const char *s, int c);
 	char    *ft_gnl_strjoin(char *s1, const char *s2);
 	char    *ft_gnl_getline(const char *stash);
 	char    *ft_gnl_newstash(char *stash);
-`
-•	get_next_line manages an internal stash per fd. Free each line returned by the caller.
-•	Buffer size and behavior might depend on the BUFFER_SIZE macro — check repo settings.
+
+	•	get_next_line manages an internal stash per fd. Free each line returned by the caller.
+	•	Buffer size and behavior might depend on the BUFFER_SIZE macro — check repo settings.
 
 ⸻
 
 ## Printf
 
-`
+	`
 	int	ft_printf(const char *format, ...);
 	int	ft_print_char(char c);
 	int	ft_print_str(const char *s);
@@ -150,31 +150,31 @@ Linked list struct:
 	int	ft_print_uint(unsigned int n);
 	int	ft_print_hex(unsigned int n, int uppercase);
 	int	ft_print_percent(void);
-`
+
 ⸻
 
 ## Notes & edge-cases
 
-•	All functions that return char * or other heap memory allocate with malloc. Caller must free() them when no longer needed.
-•	Input validation: many functions expect non-NULL pointers; check behavior in edge-cases (e.g., NULL inputs, empty strings).
-•	For ft_strlcpy / ft_strlcat: follow standard semantics (returns total length of attempted result).
-•	For ft_split: consecutive delimiters are skipped; result is NULL-terminated.
-•	For get_next_line: if using multiple file descriptors concurrently, ensure implementation supports it (per 42 requirements).
-•	For ft_printf: behavior for unsupported format flags (width, precision, length modifiers) is not guaranteed — use supported specifiers only.
+	•	All functions that return char * or other heap memory allocate with malloc. Caller must free() them when no longer needed.
+	•	Input validation: many functions expect non-NULL pointers; check behavior in edge-cases (e.g., NULL inputs, empty strings).
+	•	For ft_strlcpy / ft_strlcat: follow standard semantics (returns total length of attempted result).
+	•	For ft_split: consecutive delimiters are skipped; result is NULL-terminated.
+	•	For get_next_line: if using multiple file descriptors concurrently, ensure implementation supports it (per 42 requirements).
+	•	For ft_printf: behavior for unsupported format flags (width, precision, length modifiers) is not guaranteed — use supported specifiers only.
 
 ⸻
 
 ## Contributing
 
-If you want to improve tests, add more examples, or extend features:
-1.	Fork the repository.
-2.	Create a branch: feature/your-change.
-3.	Add tests/examples in examples/ or tests/.
-4.	Open a pull request with a short description.
+	If you want to improve tests, add more examples, or extend features:
+	1.	Fork the repository.
+	2.	Create a branch: feature/your-change.
+	3.	Add tests/examples in examples/ or tests/.
+	4.	Open a pull request with a short description.
 
 ⸻
 
 ## License
 
-Choose your license — for example, add an MIT or Unlicense file if you want this repo open-source. (No license file is included by default.)
+	Choose your license — for example, add an MIT or Unlicense file if you want this repo open-source. (No license file is included by default.)
 
