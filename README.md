@@ -1,120 +1,144 @@
-# Libft项目整合完成报告
+# Libft -- to make a 42 library in C 
 
-## 项目概述
+This repository contains the three first projects of 42 Barcelona Common-Core, the functions of Libft, get_next_line and ft_printf.
 
-本项目成功地将三个42学校编程项目整合到一个完整的C语言静态库中：
-1. **libft** - 标准C函数库重写
-2. **ft_printf** - 自定义printf实现
-3. **get_next_line** - 按行读取文件函数
+# Libft
 
-## 项目结构
+After the learning of C language during the piscine of 42, we can rewrite some important functions of libc and some other funtions to be used in the future. In this README I gonna tell how can use the functions of this libftprintf library api.
 
-```
-libft/
-├── include/          # 头文件
-│   ├── ft_printf.h
-│   ├── get_next_line.h
-│   └── libft.h
-├── src/
-│   ├── libft/       # libft函数的实现
-│   ├── printf/      # ft_printf的实现
-│   └── get_next_line/ # get_next_line的实现
-├── Makefile         # 构建脚本
-├── libft.a         # 生成的静态库
-└── test.txt        # 测试文件
-```
+## Mandatory Part
 
-## 功能实现
+### Part 1 - Functions of libc
 
-### libft项目
+`int		 ft_isalpha(int c);`
+Use it to check if the character is a letter.
+`int		 ft_isdigit(int c);`
+Use it to check if the character is a number.
+`int		 ft_isalnum(int c);`
+Use it to check if the character is a letter or a number.
+`int		 ft_isascii(int c);`
+Use it to check if the character is in the ASII table (from 0 to 127 in decimal).
+`int		 ft_isprint(int c);`
+Use it to check if the character is printable (from 32 to 126 in decimal).
+`size_t	 ft_strlen(const char *s);`
+Count the size of a string.
+`void	*ft_memset(void *s, int c, size_t n);`
 
-实现了标准的C库函数，包括：
+`void	 ft_bzero(void *s, size_t n);`
 
-**Part 1 - Libc函数：**
-- 字符检测函数：ft_isalpha, ft_isdigit, ft_isalnum, ft_isascii, ft_isprint
-- 字符串函数：ft_strlen, ft_strchr, ft_strrchr, ft_strcmp, ft_strncmp, ft_strdup
-- 内存操作函数：ft_memset, ft_memcpy, ft_memmove, ft_memchr, ft_memcmp
-- 字符转换函数：ft_toupper, ft_tolower
-- 其他函数：ft_bzero, ft_calloc, ft_atoi
+`void	*ft_memcpy(void *dest, const void *src, size_t n);`
 
-**Part 2 - Additional函数：**
-- 字符串操作：ft_substr, ft_strjoin, ft_strtrim, ft_split, ft_itoa
-- 内存管理：ft_strlcpy, ft_strlcat
-- 字符串查找：ft_strnstr
-- 函数迭代：ft_strmapi, ft_striteri
-- 输出函数：ft_putchar_fd, ft_putstr_fd, ft_putendl_fd, ft_putnbr_fd
+`void	*ft_memmove(void *dest, const void *src, size_t n);`
 
-**Bonus - 链表函数：**
-- t_list结构定义
-- 链表操作：ft_lstnew, ft_lstadd_front, ft_lstadd_back, ft_lstsize, ft_lstlast
-- 内存管理：ft_lstdelone, ft_lstclear
-- 链表遍历：ft_lstiter, ft_lstmap
+`size_t	 ft_strlcpy(char *dest, const char *src, size_t destsize);`
 
-### ft_printf项目
+`size_t	 ft_strlcat(char *dest, const char *src, size_t destsize);`
 
-实现了自定义的printf函数，支持以下格式说明符：
-- `%c` - 字符
-- `%s` - 字符串
-- `%p` - 指针
-- `%d`, `%i` - 有符号整数
-- `%u` - 无符号整数
-- `%x`, `%X` - 十六进制（大小写）
-- `%%` - 百分号
+`int		 ft_toupper(int c);`
 
-### get_next_line项目
+`int		 ft_tolower(int c);`
 
-实现了按行读取文件的功能，支持任意文件描述符，并能够处理文件末尾的情况。
+`char	*ft_strchr(const char *s, int c);`
 
-## 构建说明
+`char	*ft_strrchr(const char *s, int c);`
 
-使用Makefile构建项目：
+`int		 ft_strncmp(const char *s1, const char *s2, size_t n);`
 
-```bash
-make          # 构建静态库
-make clean    # 清理目标文件
-make fclean  # 清理静态库
-make re      # 重新构建
-make bonus   # 添加bonus功能到静态库
-make test    # 运行测试程序
-```
+`void	*ft_memchr(const void *s, int c, size_t n);`
 
-## 测试结果
+`int		 ft_memcmp(const void *s1, const void *s2, size_t n);`
 
-测试程序成功编译并运行，验证了所有三个项目的功能：
+`char	*ft_strnstr(const char *haystack, const char *needle, size_t len);`
 
-```
-Testing libft functions:
-ft_strlen: %zu
-ft_atoi: 12345
-ft_substr: 
-ft_split[0]: 
-ft_split[1]: 
-ft_split[2]: 
-ft_split[3]: 
+`int		 ft_atoi(const char *str);`
 
-Testing ft_printf:
-ft_printf: 42, 255, ff, FF, A, , 0x1234
+`void	*ft_calloc(size_t count, size_t size);`
 
-Testing get_next_line:
-Line: 
-This is the first line.
-Line: 
-This is the second line.
-...
+`char	*ft_strdup(const char *s);`
 
-Testing bonus functions:
-List size: 3
-List contents: First, Second, Third
-```
+### Part 2 - Additional Functions
 
-## 项目完成状态
+`char	*ft_substr(const char *s, unsigned int start, size_t len);`
 
-✅ libft项目已完成
-✅ ft_printf项目已完成
-✅ get_next_line项目已完成
-✅ 项目整合完成
-✅ 测试程序通过
+`char	*ft_strjoin(const char *s1, const char *s2);`
 
-## 结论
+`char	*ft_strtrim(const char *s1, const char *set);`
 
-本项目成功地将三个42学校编程项目整合到一个完整的C语言静态库中，实现了所有必需的功能，并通过了测试验证。这提供了一个可重用的C语言开发工具库，适用于后续的C语言项目开发。
+`char	**ft_split(const char *s, char c);`
+
+`char	*ft_itoa(int n);`
+
+`char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));`
+
+`void	 ft_striteri(char *s, void (*f)(unsigned int, char*));`
+
+`void	 ft_putchar_fd(char c, int fd);`
+
+`void	 ft_putstr_fd(const char *s, int fd);`
+
+`void	 ft_putendl_fd(const char *s, int fd);`
+
+`void	 ft_putnbr_fd(int n, int fd);`
+
+## Bonus Part
+
+Linked list Data Structure:
+`
+typedef struct s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}	t_list;
+`
+
+`t_list	*ft_lstnew(void *content);`
+
+`void	 ft_lstadd_front(t_list **lst, t_list *new);`
+
+`int		 ft_lstsize(t_list *lst);`
+
+`t_list	*ft_lstlast(t_list *lst);`
+
+`void	 ft_lstadd_back(t_list **lst, t_list *new);`
+
+`void	 ft_lstdelone(t_list *lst, void (*del)(void *));`
+
+`void	 ft_lstclear(t_list **lst, void (*del)(void *));`
+
+`void	 ft_lstiter(t_list *lst, void (*f)(void *));`
+
+`t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));`
+
+# Get next line
+
+`char	*get_next_line(int fd);`
+
+`size_t	ft_gnl_strlen(const char *s);`
+
+`char	*ft_gnl_strchr(const char *s, int c);`
+
+`char	*ft_gnl_strjoin(char *s1, const char *s2);`
+
+`char	*ft_gnl_getline(const char *stash);`
+
+`char	*ft_gnl_newstash(char *stash);`
+
+# Printf
+
+`int		ft_printf(const char *format, ...);`
+
+`int		ft_print_char(char c);`
+
+`int		ft_print_str(const char *s);`
+
+`int		ft_print_ptr(void *ptr);`
+
+`int		ft_print_int(int n);`
+
+`int		ft_print_uint(unsigned int n);`
+
+`int		ft_print_hex(unsigned int n, int uppercase);`
+
+`int		ft_print_percent(void);`
+
