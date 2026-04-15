@@ -3,19 +3,19 @@
 #include "libft.h"
 #include "libft_bonus.h"
 
-static voidprint_item(void *content)
+static void print_item(void *content)
 {
 printf("%s ", (char *)content);
 }
 
-static voidfree_item(void *content)
+static void free_item(void *content)
 {
 free(content);
 }
 
-static voidto_upper_str(char *s)
+static void to_upper_str(char *s)
 {
-unsigned inti;
+unsigned int i;
 
 i = 0;
 while (s[i])
@@ -25,9 +25,9 @@ i++;
 }
 }
 
-static voidprint_split(char **arr)
+static void print_split(char **arr)
 {
-inti;
+int i;
 
 i = 0;
 while (arr && arr[i])
@@ -40,10 +40,10 @@ free(arr);
 printf("\n");
 }
 
-intmain(void)
+int main(void)
 {
-char**parts;
-t_list*lst;
+char	**parts;
+t_list *lst;
 
 printf("isalpha(A)=%d strlen(42)=%zu\n", ft_isalpha('A'), ft_strlen("42"));
 printf("strnstr=%s atoi=%d\n", ft_strnstr("hello42", "42", 7), ft_atoi(" -123"));

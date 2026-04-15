@@ -1,8 +1,8 @@
 #include "libft.h"
 
-size_tft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-size_ti;
+size_t i;
 
 if (!src)
 return (0);

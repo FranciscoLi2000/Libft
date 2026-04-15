@@ -1,8 +1,8 @@
 #include "libft.h"
 
-voidft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-longnb;
+long nb;
 
 nb = n;
 if (nb < 0)

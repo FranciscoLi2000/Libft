@@ -1,9 +1,9 @@
 #include "libft.h"
 
-char*ft_strdup(const char *s1)
+char *ft_strdup(const char *s1)
 {
-size_tlen;
-char*dup;
+size_t len;
+char *dup;
 
 len = ft_strlen(s1) + 1;
 dup = (char *)malloc(len);

@@ -1,8 +1,8 @@
 #include "libft.h"
 
-size_tft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-size_ti;
+size_t i;
 
 i = 0;
 while (s[i])

@@ -1,8 +1,8 @@
 #include "libft.h"
 
-static size_tcount_words(char const *s, char c)
+static size_t count_words(char const *s, char c)
 {
-size_tcount;
+size_t count;
 
 count = 0;
 while (*s)
@@ -19,9 +19,9 @@ s++;
 return (count);
 }
 
-static size_tword_len(char const *s, char c)
+static size_t word_len(char const *s, char c)
 {
-size_tlen;
+size_t len;
 
 len = 0;
 while (s[len] && s[len] != c)
@@ -29,7 +29,7 @@ len++;
 return (len);
 }
 
-static char**free_words(char **arr, size_t i)
+static char	**free_words(char **arr, size_t i)
 {
 while (i > 0)
 {
@@ -40,10 +40,10 @@ free(arr);
 return (NULL);
 }
 
-static char**fill_words(char **arr, char const *s, char c)
+static char	**fill_words(char **arr, char const *s, char c)
 {
-size_ti;
-size_tlen;
+size_t i;
+size_t len;
 
 i = 0;
 while (*s)
@@ -64,10 +64,10 @@ arr[i] = NULL;
 return (arr);
 }
 
-char**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-char**arr;
-size_tcount;
+char	**arr;
+size_t count;
 
 if (!s)
 return (NULL);

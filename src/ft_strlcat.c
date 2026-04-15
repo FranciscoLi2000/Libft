@@ -1,10 +1,10 @@
 #include "libft.h"
 
-size_tft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-size_tdlen;
-size_tslen;
-size_ti;
+size_t dlen;
+size_t slen;
+size_t i;
 
 dlen = ft_strlen(dst);
 slen = ft_strlen(src);

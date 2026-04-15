@@ -37,6 +37,8 @@ $(SRC_DIR)/ft_strjoin.c \
 $(SRC_DIR)/ft_strtrim.c \
 $(SRC_DIR)/ft_split.c \
 $(SRC_DIR)/ft_itoa.c \
+$(SRC_DIR)/ft_is_set.c \
+$(SRC_DIR)/ft_numlen.c \
 $(SRC_DIR)/ft_strmapi.c \
 $(SRC_DIR)/ft_striteri.c \
 $(SRC_DIR)/ft_putchar_fd.c \
@@ -61,19 +63,19 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
-$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 bonus: $(NAME) $(BONUS_OBJS)
-$(AR) $(NAME) $(BONUS_OBJS)
+	$(AR) $(NAME) $(BONUS_OBJS)
 
 clean:
-$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

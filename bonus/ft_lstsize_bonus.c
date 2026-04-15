@@ -1,8 +1,8 @@
 #include "libft_bonus.h"
 
-intft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-intsize;
+int size;
 
 size = 0;
 while (lst)

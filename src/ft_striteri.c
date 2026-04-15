@@ -1,8 +1,8 @@
 #include "libft.h"
 
-voidft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-unsigned inti;
+unsigned int i;
 
 if (!s || !f)
 return ;
